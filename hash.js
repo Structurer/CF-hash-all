@@ -256,19 +256,19 @@ async function calcFileHashAuto(forceRefresh = false) {
         if (forceRefresh) {
             const existingGroups = combinedResult.querySelectorAll('.file-group');
             const existingGroup = Array.from(existingGroups).find(g => 
-                g.querySelector('.file-name')?.textContent === fileObj.name &&
-                g.querySelector('.file-info span:nth-child(2)')?.textContent === path
+                g.dataset.path === path
             );
-            
+
             if (existingGroup) {
                 group = existingGroup;
                 updateTextCards(group, results);
                 continue;
             }
         }
-        
+
         group = document.createElement('div');
         group.className = 'file-group new-flash';
+        group.dataset.path = path;
         
         const info = document.createElement('div');
         info.className = 'file-info';
@@ -322,6 +322,8 @@ textInput.addEventListener('drop', async (e) => {
     
     textInput.value = '';
     hasFiles = true;
+    hasText = false;
+    removeTextSection();
     
     newFileCount = 0;
     const tempList = [];
