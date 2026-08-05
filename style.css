@@ -123,7 +123,6 @@ body {
     font-size: 14px;
     font-weight: 600;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -142,6 +141,10 @@ body {
 .algo-section {
     background: var(--bg-card);
     border-color: var(--border-color);
+}
+
+.algo-section .section-title {
+    border-bottom: 1px solid var(--border-light);
 }
 
 .algo-wrap {
